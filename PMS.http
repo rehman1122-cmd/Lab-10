@@ -1,0 +1,36 @@
+@PMS_HostAddress = http://localhost:5265
+
+### List all watches (200 OK)
+GET {{PMS_HostAddress}}/api/watches
+Accept: application/json
+
+### Get a watch by ID (200 OK, or 404 ProblemDetails)
+GET {{PMS_HostAddress}}/api/watches/1
+Accept: application/json
+
+### Create a watch (201 Created with a Location header)
+POST {{PMS_HostAddress}}/api/watches
+Content-Type: application/json
+
+{
+  "brand": "Seiko",
+  "model": "Presage",
+  "price": 499.99,
+  "stockQuantity": 8,
+  "description": "Automatic dress watch with a cream dial."
+}
+
+### Replace a watch (204 No Content, or 404 ProblemDetails)
+PUT {{PMS_HostAddress}}/api/watches/1
+Content-Type: application/json
+
+{
+  "brand": "Rolex",
+  "model": "Datejust",
+  "price": 8750.00,
+  "stockQuantity": 2,
+  "description": "Updated stock and price."
+}
+
+### Delete a watch (204 No Content, or 404 ProblemDetails)
+DELETE {{PMS_HostAddress}}/api/watches/1
